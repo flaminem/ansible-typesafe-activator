@@ -5,6 +5,9 @@
 - name: Download Typesafe Activator
   when: activatordir.stat.exists == false
   get_url: url={{ typesafe_activator_url }} dest="/tmp/{{ typesafe_activator_archive }}"
+  environment: 
+    http_proxy: "{{http_proxy}}"
+    https_proxy: "{{http_proxy}}"
 
 - name: Unzip Typesafe Activator
   when: activatordir.stat.exists == false
